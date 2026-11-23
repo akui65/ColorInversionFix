@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.colorinversion.fix"
+    android:versionCode="2"
+    android:versionName="1.1">
+
+    <application
+        android:label="颜色反转修复"
+        android:hasCode="true"
+        android:allowBackup="false">
+
+        <!-- LSPosed / Xposed 模块标识 -->
+        <meta-data
+            android:name="xposedmodule"
+            android:value="true" />
+        <meta-data
+            android:name="xposeddescription"
+            android:value="修复 HyperOS 移植包（Android 16/17）上「颜色反转」开关无效的问题：在 system_server 中监听无障碍颜色反转设置，并在开关变化/开机/用户切换时直接向 SurfaceFlinger 写入反转颜色矩阵（1015 事务），DisplayTransformManager 仅做状态同步。作用域：系统框架(android)" />
+        <meta-data
+            android:name="xposedauthor"
+            android:value="Hell'C" />
+        <meta-data
+            android:name="xposedminversion"
+            android:value="93" />
+        <!-- 作用域：系统框架(android) -->
+        <meta-data
+            android:name="xposedscope"
+            android:resource="@array/xposedscope" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="颜色反转修复">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
